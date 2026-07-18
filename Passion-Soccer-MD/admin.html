@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+    <title>Panel de administración — Passion Soccer MD</title>
+    <meta name="robots" content="noindex, nofollow">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Space+Mono:wght@400;700&display=swap"
+        rel="stylesheet">
+
+    <link rel="stylesheet" href="admin.css">
+
+    <!-- Cliente de Supabase (nuestra base de datos gratuita en la nube) -->
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+</head>
+
+<body>
+
+    <!-- ============ VISTA: LOGIN ============ -->
+    <section class="login-view" id="login-view">
+        <div class="login-card">
+            <p class="login-card__eyebrow">PASSION SOCCER MD</p>
+            <h1 class="login-card__title">Panel de administración</h1>
+            <p class="login-card__hint">Acceso solo para el equipo organizador.</p>
+
+            <form id="login-form" class="login-form" novalidate>
+                <div class="field">
+                    <label for="admin-email">Correo</label>
+                    <input type="email" id="admin-email" name="email" placeholder="tucorreo@ejemplo.com"
+                        autocomplete="username" required>
+                </div>
+                <div class="field">
+                    <label for="admin-password">Contraseña</label>
+                    <input type="password" id="admin-password" name="password" placeholder="••••••••"
+                        autocomplete="current-password" required>
+                </div>
+
+                <button type="submit" class="btn btn--primary btn--block" id="login-submit">Entrar</button>
+                <p class="login-form__error" id="login-error" role="alert"></p>
+            </form>
+
+            <p class="login-card__note">
+                El acceso está protegido por Supabase Auth: solo el correo que
+                creaste como administrador puede entrar. Ver <code>admin.js</code>
+                para más detalle.
+            </p>
+        </div>
+    </section>
+
+    <!-- ============ VISTA: PANEL ============ -->
+    <section class="panel-view" id="panel-view" hidden>
+        <header class="panel-header">
+            <div>
+                <p class="panel-header__eyebrow">PASSION SOCCER MD</p>
+                <h1 class="panel-header__title">Registros</h1>
+            </div>
+            <button type="button" class="btn btn--ghost" id="logout-btn">Cerrar sesión</button>
+        </header>
+
+        <div class="panel-toolbar">
+            <p class="panel-toolbar__count" id="registrations-count">0 registros</p>
+            <div class="panel-toolbar__actions">
+                <button type="button" class="btn btn--secondary" id="export-btn">Exportar CSV</button>
+                <button type="button" class="btn btn--ghost" id="refresh-btn">Actualizar</button>
+            </div>
+        </div>
+
+        <p class="panel-empty" id="panel-empty" hidden>
+            Aún no hay registros. En cuanto alguien se registre en la landing, aparecerá aquí.
+        </p>
+
+        <!-- Tabla para pantallas anchas -->
+        <div class="table-wrap" id="table-wrap" hidden>
+            <table class="registrations-table">
+                <thead>
+                    <tr>
+                        <th>Fecha</th>
+                        <th>Nombre</th>
+                        <th>Teléfono</th>
+                        <th>Correo</th>
+                        <th>Instagram</th>
+                    </tr>
+                </thead>
+                <tbody id="registrations-tbody"></tbody>
+            </table>
+        </div>
+
+        <!-- Tarjetas para móvil -->
+        <div class="cards-wrap" id="cards-wrap" hidden></div>
+    </section>
+
+    <script src="supabase-config.js"></script>
+    <script src="admin.js"></script>
+</body>
+
+</html>

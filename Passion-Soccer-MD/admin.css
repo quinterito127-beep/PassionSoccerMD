@@ -1,0 +1,367 @@
+/* =========================================================
+   PASSION SOCCER MD — admin.css
+   Panel claro y profesional, deliberadamente distinto de la
+   landing (que es oscura). Mobile-first.
+   ========================================================= */
+
+:root {
+    --bg: #f4f6f1;
+    --surface: #ffffff;
+    --line: #e2e6dc;
+    --ink: #12180f;
+    --ink-muted: #5c6656;
+    --lime: #8fb62b;
+    --lime-bg: #eef7d9;
+    --orange: #e0521c;
+    --error: #d5372a;
+    --font-body: "Inter", sans-serif;
+    --font-mono: "Space Mono", monospace;
+    --radius: 12px;
+    --pad: 20px;
+}
+
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    background: var(--bg);
+    color: var(--ink);
+    font-family: var(--font-body);
+    line-height: 1.5;
+    -webkit-font-smoothing: antialiased;
+}
+
+h1,
+h2 {
+    margin: 0;
+}
+
+p {
+    margin: 0;
+}
+
+button {
+    font-family: inherit;
+}
+
+code {
+    font-family: var(--font-mono);
+    background: #eceee7;
+    padding: 1px 5px;
+    border-radius: 4px;
+    font-size: 0.9em;
+}
+
+/* -------------------------------------------------------
+   LOGIN
+   ------------------------------------------------------- */
+.login-view {
+    min-height: 100svh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 24px;
+}
+
+.login-card {
+    width: 100%;
+    max-width: 380px;
+    background: var(--surface);
+    border: 1px solid var(--line);
+    border-radius: 18px;
+    padding: 32px 24px;
+    box-shadow: 0 12px 32px -18px rgba(18, 24, 15, 0.25);
+}
+
+.login-card__eyebrow {
+    font-family: var(--font-mono);
+    font-size: 11px;
+    letter-spacing: 0.14em;
+    color: var(--lime);
+    margin-bottom: 8px;
+}
+
+.login-card__title {
+    font-size: 22px;
+    font-weight: 800;
+    margin-bottom: 6px;
+}
+
+.login-card__hint {
+    font-size: 14px;
+    color: var(--ink-muted);
+    margin-bottom: 24px;
+}
+
+.login-form {
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+}
+
+.field label {
+    display: block;
+    font-size: 13px;
+    font-weight: 600;
+    margin-bottom: 6px;
+}
+
+.field input {
+    width: 100%;
+    min-height: 50px;
+    padding: 0 14px;
+    border: 1.5px solid var(--line);
+    border-radius: 10px;
+    font-size: 16px;
+    background: #fafbf8;
+    color: var(--ink);
+}
+
+.field input:focus {
+    outline: none;
+    border-color: var(--lime);
+    background: #fff;
+}
+
+.field input.is-error {
+    border-color: var(--error);
+}
+
+.login-form__error {
+    min-height: 18px;
+    font-size: 13px;
+    color: var(--error);
+    font-weight: 600;
+}
+
+.login-card__note {
+    margin-top: 20px;
+    font-size: 12px;
+    color: var(--ink-muted);
+    line-height: 1.5;
+    border-top: 1px solid var(--line);
+    padding-top: 14px;
+}
+
+/* Botones */
+.btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    min-height: 48px;
+    padding: 0 18px;
+    border-radius: 10px;
+    border: none;
+    font-size: 15px;
+    font-weight: 700;
+    cursor: pointer;
+    transition: transform 0.12s ease, filter 0.15s ease;
+}
+
+.btn:active {
+    transform: scale(0.97);
+}
+
+.btn--block {
+    width: 100%;
+}
+
+.btn--primary {
+    background: var(--ink);
+    color: #fff;
+}
+
+.btn--primary:hover {
+    filter: brightness(1.2);
+}
+
+.btn--secondary {
+    background: var(--lime-bg);
+    color: #3c4f14;
+    border: 1px solid #d3e6a4;
+}
+
+.btn--ghost {
+    background: transparent;
+    color: var(--ink-muted);
+    border: 1.5px solid var(--line);
+}
+
+/* -------------------------------------------------------
+   PANEL
+   ------------------------------------------------------- */
+.panel-view {
+    max-width: 960px;
+    margin: 0 auto;
+    padding: 20px var(--pad) 60px;
+}
+
+.panel-header {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    gap: 12px;
+    margin-bottom: 18px;
+}
+
+.panel-header__eyebrow {
+    font-family: var(--font-mono);
+    font-size: 11px;
+    letter-spacing: 0.14em;
+    color: var(--lime);
+    margin-bottom: 4px;
+}
+
+.panel-header__title {
+    font-size: 24px;
+    font-weight: 800;
+}
+
+.panel-toolbar {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    margin-bottom: 16px;
+}
+
+.panel-toolbar__count {
+    font-size: 14px;
+    color: var(--ink-muted);
+    font-weight: 600;
+}
+
+.panel-toolbar__actions {
+    display: flex;
+    gap: 10px;
+}
+
+.panel-toolbar__actions .btn {
+    flex: 1;
+}
+
+.panel-empty {
+    background: var(--surface);
+    border: 1px dashed var(--line);
+    border-radius: var(--radius);
+    padding: 32px 20px;
+    text-align: center;
+    color: var(--ink-muted);
+    font-size: 14.5px;
+}
+
+/* Tabla (desktop / tablet) */
+.table-wrap {
+    background: var(--surface);
+    border: 1px solid var(--line);
+    border-radius: var(--radius);
+    overflow-x: auto;
+}
+
+.registrations-table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 14px;
+    min-width: 640px;
+}
+
+.registrations-table th {
+    text-align: left;
+    font-size: 12px;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    color: var(--ink-muted);
+    padding: 14px 16px;
+    border-bottom: 1px solid var(--line);
+    position: sticky;
+    top: 0;
+    background: var(--surface);
+}
+
+.registrations-table td {
+    padding: 14px 16px;
+    border-bottom: 1px solid var(--line);
+    vertical-align: top;
+}
+
+.registrations-table tr:last-child td {
+    border-bottom: none;
+}
+
+.registrations-table td.muted {
+    color: var(--ink-muted);
+}
+
+/* Tarjetas (móvil) */
+.cards-wrap {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.reg-card {
+    background: var(--surface);
+    border: 1px solid var(--line);
+    border-radius: var(--radius);
+    padding: 14px 16px;
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+}
+
+.reg-card__row {
+    display: flex;
+    justify-content: space-between;
+    gap: 12px;
+    font-size: 14px;
+}
+
+.reg-card__label {
+    color: var(--ink-muted);
+    font-size: 12px;
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+    min-width: 70px;
+}
+
+.reg-card__value {
+    text-align: right;
+    font-weight: 600;
+    word-break: break-word;
+}
+
+.reg-card__date {
+    font-family: var(--font-mono);
+    font-size: 12px;
+    color: var(--lime);
+    margin-bottom: 2px;
+}
+
+/* -------------------------------------------------------
+   Breakpoint: a partir de aquí mostramos tabla en vez de tarjetas
+   ------------------------------------------------------- */
+@media (min-width: 720px) {
+    .panel-header__title {
+        font-size: 28px;
+    }
+
+    .panel-toolbar {
+        flex-direction: row;
+        align-items: center;
+        justify-content: space-between;
+    }
+
+    .panel-toolbar__actions .btn {
+        flex: none;
+    }
+}
+
+/* Foco visible */
+a:focus-visible,
+button:focus-visible,
+input:focus-visible {
+    outline: 2px solid var(--lime);
+    outline-offset: 2px;
+}

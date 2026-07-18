@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+    <title>Passion Soccer MD — Algo grande está por comenzar</title>
+    <meta name="description"
+        content="Passion Soccer MD. Las mejores canchas en Mérida. Regístrate y sé de los primeros en enterarte.">
+
+    <!-- Meta para compartir en redes / WhatsApp -->
+    <meta property="og:title" content="Passion Soccer MD">
+    <meta property="og:description" content="Algo grande está por comenzar. Siente la pasión del fútbol como se debe.">
+    <meta property="og:type" content="website">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Archivo+Black&family=Inter:wght@400;500;600;700;800&family=Space+Mono:wght@400;700&display=swap"
+        rel="stylesheet">
+
+    <link rel="stylesheet" href="style.css">
+
+    <!-- Cliente de Supabase (nuestra base de datos gratuita en la nube) -->
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+</head>
+
+<body>
+
+    <!-- ============ FONDO DECORATIVO ============ -->
+    <div class="field-lines" aria-hidden="true"></div>
+
+    <!-- ============ HERO ============ -->
+    <header class="hero" id="top">
+        <div class="hero__eyebrow">MÉRIDA · TEMPORADA 01</div>
+
+        <h1 class="hero__title">
+            PASSION<br>
+            <span class="hero__title-accent">SOCCER MD</span>
+        </h1>
+
+        <p class="hero__subtitle">
+            Prepárate para las mejores canchas en Mérida.<br>
+            Esto no es solo un torneo. Es otra forma de vivir el fútbol.
+        </p>
+
+        <div class="hero__hint">
+            <span class="hero__hint-dot"></span>
+            Algo grande está por comenzar
+        </div>
+    </header>
+
+    <!-- ============ SCOREBOARD / CONTADOR ============ -->
+    <section class="scoreboard" id="scoreboard" aria-label="Cuenta regresiva para el lanzamiento">
+        <p class="scoreboard__label">Faltan para destapar todo</p>
+
+        <div class="scoreboard__board" id="countdown">
+            <div class="scoreboard__unit">
+                <span class="scoreboard__value" id="days">30</span>
+                <span class="scoreboard__key">Días</span>
+            </div>
+            <span class="scoreboard__sep">:</span>
+            <div class="scoreboard__unit">
+                <span class="scoreboard__value" id="hours">00</span>
+                <span class="scoreboard__key">Hrs</span>
+            </div>
+            <span class="scoreboard__sep">:</span>
+            <div class="scoreboard__unit">
+                <span class="scoreboard__value" id="minutes">00</span>
+                <span class="scoreboard__key">Min</span>
+            </div>
+            <span class="scoreboard__sep">:</span>
+            <div class="scoreboard__unit">
+                <span class="scoreboard__value" id="seconds">00</span>
+                <span class="scoreboard__key">Seg</span>
+            </div>
+        </div>
+
+        <p class="scoreboard__final" id="countdown-final" hidden>
+            ⚽ El juego está por comenzar. Pronto revelaremos todo.
+        </p>
+    </section>
+
+    <!-- ============ FORMULARIO DE REGISTRO ============ -->
+    <section class="signup" id="registro" aria-label="Formulario de registro">
+        <h2 class="signup__title">Regístrate para ser de los primeros</h2>
+        <p class="signup__subtitle">Cero spam. Solo te avisamos cuando esto arranque de verdad.</p>
+
+        <form id="signup-form" class="signup__form" novalidate>
+            <div class="field">
+                <label for="name">Nombre <span class="field__required">*</span></label>
+                <input type="text" id="name" name="name" placeholder="¿Cómo te llamas?" autocomplete="name" required>
+                <span class="field__error" id="error-name"></span>
+            </div>
+
+            <div class="field">
+                <label for="phone">Teléfono <span class="field__required">*</span></label>
+                <input type="tel" id="phone" name="phone" placeholder="04XX-XXXXXXX" inputmode="tel" autocomplete="tel"
+                    required>
+                <span class="field__error" id="error-phone"></span>
+            </div>
+
+            <div class="field">
+                <label for="email">Correo <span class="field__optional">(opcional)</span></label>
+                <input type="email" id="email" name="email" placeholder="tucorreo@ejemplo.com" autocomplete="email"
+                    inputmode="email">
+                <span class="field__error" id="error-email"></span>
+            </div>
+
+            <div class="field">
+                <label for="instagram">Instagram <span class="field__optional">(opcional)</span></label>
+                <div class="field__prefixed">
+                    <span class="field__prefix">@</span>
+                    <input type="text" id="instagram" name="instagram" placeholder="tu_usuario" autocomplete="off">
+                </div>
+            </div>
+
+            <button type="submit" class="btn btn--primary btn--block" id="submit-btn">
+                Quiero estar dentro
+            </button>
+
+            <p class="signup__feedback" id="form-feedback" role="status" aria-live="polite"></p>
+
+            <p class="signup__legal">
+                Al registrarte aceptas nuestros
+                <button type="button" class="link-btn" id="open-terms">Términos y Condiciones</button>.
+            </p>
+        </form>
+    </section>
+
+    <!-- ============ CONTACTO DIRECTO ============ -->
+    <section class="contact" aria-label="Contacto directo">
+        <p class="contact__title">¿Prefieres hablar directo?</p>
+        <div class="contact__buttons">
+            <a class="btn btn--whatsapp"
+                href="https://wa.me/584247447856?text=Hola%2C%20quiero%20saber%20m%C3%A1s%20sobre%20Passion%20Soccer%20MD"
+                target="_blank" rel="noopener noreferrer">
+                <svg viewBox="0 0 24 24" width="22" height="22" fill="currentColor" aria-hidden="true">
+                    <path
+                        d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.872.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z" />
+                    <path
+                        d="M12.012 2C6.484 2 2 6.477 2 11.99c0 2.115.667 4.076 1.803 5.686L2.6 21.4a.5.5 0 0 0 .616.616l3.795-1.192a10.02 10.02 0 0 0 5.001 1.336c5.528 0 10.012-4.477 10.012-9.99C22.024 6.477 17.54 2 12.012 2zm0 18.176a8.14 8.14 0 0 1-4.415-1.296.5.5 0 0 0-.41-.06l-2.44.767.79-2.353a.5.5 0 0 0-.068-.446 8.13 8.13 0 0 1-1.469-4.62c0-4.51 3.68-8.176 8.012-8.176 4.412 0 8.024 3.667 8.024 8.176 0 4.51-3.612 8.008-8.024 8.008z" />
+                </svg>
+                WhatsApp
+            </a>
+            <a class="btn btn--instagram"
+                href="https://www.instagram.com/pasion.soccermd?igsh=MWtoOWplM290YWhkdQ%3D%3D&utm_source=qr"
+                target="_blank" rel="noopener noreferrer">
+                <svg viewBox="0 0 24 24" width="22" height="22" fill="currentColor" aria-hidden="true">
+                    <path
+                        d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zM12 5.838a6.162 6.162 0 1 0 0 12.324 6.162 6.162 0 0 0 0-12.324zM12 16a4 4 0 1 1 0-8 4 4 0 0 1 0 8zm6.406-11.845a1.44 1.44 0 1 0 0 2.881 1.44 1.44 0 0 0 0-2.881z" />
+                </svg>
+                Instagram
+            </a>
+        </div>
+    </section>
+
+    <!-- ============ FOOTER ============ -->
+    <footer class="footer">
+        <p>Passion Soccer MD © <span id="year">2026</span></p>
+        <button type="button" class="link-btn link-btn--muted" id="open-terms-footer">Términos y Condiciones</button>
+    </footer>
+
+    <!-- ============ MODAL TÉRMINOS ============ -->
+    <div class="modal" id="terms-modal" hidden>
+        <div class="modal__backdrop" data-close-modal></div>
+        <div class="modal__panel" role="dialog" aria-modal="true" aria-labelledby="terms-title">
+            <h2 id="terms-title">Términos y Condiciones</h2>
+            <div class="modal__body">
+                <p>Al registrarte en Passion Soccer MD nos compartes tu nombre, teléfono y, si quieres, tu correo e
+                    Instagram. Es toda la info que te pedimos, ni una más.</p>
+                <p>¿Para qué la usamos? Solo para escribirte cuando esto arranque: fecha de lanzamiento, torneos,
+                    promociones y noticias del proyecto. Nada de mensajes random de terceros.</p>
+                <p>Tus datos no se venden ni se comparten con nadie fuera de Passion Soccer MD sin tu permiso explícito.
+                </p>
+                <p>Si en algún momento quieres que borremos tu información, escríbenos por WhatsApp o Instagram y lo
+                    resolvemos directo, sin vueltas.</p>
+            </div>
+            <button type="button" class="btn btn--primary btn--block" data-close-modal>Entendido</button>
+        </div>
+    </div>
+
+    <script src="supabase-config.js"></script>
+    <script src="script.js"></script>
+</body>
+
+</html>
